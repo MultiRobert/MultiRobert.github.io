@@ -7,31 +7,25 @@
 html, body {
   width: 100%;
   height: 100%;
-}
-
-body {
-  background: radial-gradient(circle at center, #020617, #000);
+  background: #000;
   overflow: hidden;
-  font-family: system-ui, sans-serif;
 }
 
-/* =========================
-   STARFIELD CANVAS (BACK)
-========================= */
-
+/* ⭐ STARFIELD CANVAS */
 #starfield {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background: #000;
   z-index: 0;
-  background: radial-gradient(circle at bottom, #02030a, #000);
 }
 
-/* =========================
-   SOLAR SYSTEM WRAPPER
-========================= */
-
+/* ☀ SOLAR SYSTEM */
 #solar-system {
-  position: absolute;
+  position: fixed;
   inset: 0;
   margin: auto;
 
@@ -42,186 +36,47 @@ body {
   align-items: center;
   justify-content: center;
 
-  /* 🔥 전체 크기 비율 조절 핵심 */
   transform: scale(1.25);
-  transform-origin: center center;
+  transform-origin: center;
 
   z-index: 2;
+  pointer-events: none;
 }
 
-/* =========================
-   SUN
-========================= */
-
+/* SUN */
 .sun {
-  position: absolute;
   width: 220px;
   height: 220px;
   border-radius: 50%;
 
   background: radial-gradient(
     circle,
-    #fff9c4 0%,
-    #ffd54f 30%,
-    #ff9800 60%,
+    #fffde7 0%,
+    #ffd54f 35%,
+    #ff9800 65%,
     #e65100 100%
   );
 
   box-shadow:
-    0 0 220px rgba(255, 200, 80, 0.9),
-    0 0 420px rgba(255, 140, 0, 0.7);
+    0 0 200px rgba(255, 180, 60, 0.9),
+    0 0 420px rgba(255, 120, 0, 0.7);
 }
 
-/* =========================
-   ORBIT BASE
-========================= */
-
+/* ORBITS */
 .orbit {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255,255,255,0.05);
   animation: spin linear infinite;
 }
 
-/* =========================
-   PLANET BASE
-========================= */
-
+/* PLANET BASE */
 .planet {
   position: absolute;
   top: 50%;
   right: -10px;
   transform: translateY(-50%);
   border-radius: 50%;
-
   background-size: cover;
   background-position: center;
-
-  box-shadow:
-    inset -6px -6px 14px rgba(0, 0, 0, 0.65),
-    inset 4px 4px 10px rgba(255, 255, 255, 0.2),
-    0 0 20px rgba(0, 0, 0, 0.8);
-}
-
-/* =========================
-   PLANETS
-========================= */
-
-/* Mercury */
-.mercury {
-  width: 300px;
-  height: 300px;
-  animation-duration: 6s;
-}
-.mercury .planet {
-  width: 8px;
-  height: 8px;
-  background: radial-gradient(circle, #bbb, #555);
-}
-
-/* Venus */
-.venus {
-  width: 380px;
-  height: 380px;
-  animation-duration: 9s;
-}
-.venus .planet {
-  width: 14px;
-  height: 14px;
-  background: radial-gradient(circle, #ffe08a, #c2a100);
-}
-
-/* Earth */
-.earth {
-  width: 470px;
-  height: 470px;
-  animation-duration: 12s;
-}
-.earth .planet {
-  width: 18px;
-  height: 18px;
-  background-image: url("https://multirobert.github.io/earth-texture.jpg");
-}
-
-/* Mars */
-.mars {
-  width: 560px;
-  height: 560px;
-  animation-duration: 15s;
-}
-.mars .planet {
-  width: 14px;
-  height: 14px;
-  background: radial-gradient(circle, #ff7a5a, #7f1d1d);
-}
-
-/* Jupiter */
-.jupiter {
-  width: 720px;
-  height: 720px;
-  animation-duration: 20s;
-}
-.jupiter .planet {
-  width: 36px;
-  height: 36px;
-  background: radial-gradient(circle, #f3d5b5, #9c6b3f);
-}
-
-/* Saturn */
-.saturn {
-  width: 900px;
-  height: 900px;
-  animation-duration: 26s;
-}
-.saturn .planet {
-  width: 30px;
-  height: 30px;
-  background: radial-gradient(circle, #f1d9a0, #bfa76a);
-  position: relative;
-}
-
-/* Saturn Ring */
-.saturn .planet::after {
-  content: "";
-  position: absolute;
-  inset: -12px;
-  border: 2px solid rgba(230, 210, 170, 0.55);
-  border-radius: 50%;
-}
-
-/* Uranus */
-.uranus {
-  width: 1080px;
-  height: 1080px;
-  animation-duration: 32s;
-}
-.uranus .planet {
-  width: 18px;
-  height: 18px;
-  background: radial-gradient(circle, #b9f3ff, #4ba3c7);
-}
-
-/* Neptune */
-.neptune {
-  width: 1250px;
-  height: 1250px;
-  animation-duration: 38s;
-}
-.neptune .planet {
-  width: 18px;
-  height: 18px;
-  background: radial-gradient(circle, #5fa8ff, #1e3a8a);
-}
-
-/* =========================
-   ANIMATION
-========================= */
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
