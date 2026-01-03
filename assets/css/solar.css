@@ -16,23 +16,27 @@ body {
 
 #stars {
   position: fixed;
-  inset: 0;
+  inset: -200%;
   background:
-    radial-gradient(1px 1px at 10% 20%, white, transparent),
-    radial-gradient(1px 1px at 30% 80%, #ffe9a3, transparent),
-    radial-gradient(1px 1px at 50% 40%, white, transparent),
-    radial-gradient(1px 1px at 70% 10%, #cce6ff, transparent),
-    radial-gradient(2px 2px at 90% 60%, white, transparent),
-    radial-gradient(1px 1px at 20% 50%, #fff, transparent),
-    radial-gradient(2px 2px at 80% 90%, #ffd, transparent);
-  background-size: 300px 300px;
-  animation: starMove 200s linear infinite;
+    radial-gradient(1px 1px at 12% 87%, #fff, transparent),
+    radial-gradient(1px 1px at 33% 14%, #ffe9a3, transparent),
+    radial-gradient(2px 2px at 78% 64%, #ffffff, transparent),
+    radial-gradient(1px 1px at 55% 92%, #cce6ff, transparent),
+    radial-gradient(2px 2px at 91% 23%, #ffd, transparent),
+    radial-gradient(1px 1px at 7% 46%, #fff, transparent),
+    radial-gradient(1px 1px at 66% 38%, #fff, transparent),
+    radial-gradient(2px 2px at 44% 71%, #e6f2ff, transparent),
+    radial-gradient(1px 1px at 82% 89%, #fff, transparent),
+    radial-gradient(1px 1px at 19% 9%, #fff, transparent);
+  background-size: 1200px 1200px;
+  animation: driftStars 320s linear infinite;
   z-index: 0;
+  opacity: 0.85;
 }
 
-@keyframes starMove {
-  from { background-position: 0 0; }
-  to   { background-position: 3000px 3000px; }
+@keyframes driftStars {
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(400px, 800px, 0); }
 }
 
 /* =======================
