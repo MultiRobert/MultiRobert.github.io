@@ -55,7 +55,7 @@ body {
 
 @keyframes twinkle {
   from { opacity: 0.5; }
-  to { opacity: 1; }
+  to   { opacity: 1; }
 }
 
 /* =========================
@@ -91,7 +91,7 @@ body {
 }
 
 /* =========================
-   EARTH (BASE)
+   EARTH (TEXTURE VERSION)
 ========================= */
 .earth {
   width: 180px;
@@ -101,42 +101,27 @@ body {
   overflow: hidden;
   z-index: 2;
 
-  /* 바다 + 밤쪽 */
-  background: radial-gradient(
-    circle at 30% 35%,
-    #2e86c1 0%,
-    #1b4f72 40%,
-    #0b2c3d 65%,
-    #000000 100%
-  );
+  /* ✅ 지구 텍스처 */
+  background-image: url("../images/earth-texture.jpg");
+  background-size: cover;
+  background-position: 0% 50%;
 
+  /* 밤/낮 그림자 + 입체감 */
   box-shadow:
     0 0 35px rgba(80, 160, 255, 0.35),
     inset -35px -25px 60px rgba(0, 0, 0, 0.85);
+
+  animation: earth-rotate 40s linear infinite;
 }
 
-/* =========================
-   CONTINENTS
-========================= */
-.earth-continents {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-
-  background:
-    radial-gradient(circle at 20% 40%, rgba(46,204,113,0.9) 6%, transparent 7%),
-    radial-gradient(circle at 35% 55%, rgba(39,174,96,0.85) 7%, transparent 9%),
-    radial-gradient(circle at 50% 45%, rgba(46,204,113,0.75) 5%, transparent 7%),
-    radial-gradient(circle at 65% 60%, rgba(39,174,96,0.85) 8%, transparent 10%),
-    radial-gradient(circle at 75% 40%, rgba(46,204,113,0.7) 6%, transparent 8%);
-
-  filter: blur(1px);
-  animation: continents-rotate 30s linear infinite;
-}
-
-@keyframes continents-rotate {
-  from { transform: translateX(0); }
-  to { transform: translateX(-40px); }
+/* 지구 자전 효과 */
+@keyframes earth-rotate {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
 }
 
 /* =========================
@@ -150,8 +135,8 @@ body {
 
   background: radial-gradient(
     circle,
-    rgba(120,200,255,0.25),
-    rgba(120,200,255,0.12),
+    rgba(120, 200, 255, 0.25),
+    rgba(120, 200, 255, 0.12),
     transparent 70%
   );
 }
