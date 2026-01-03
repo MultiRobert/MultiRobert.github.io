@@ -2,34 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>MultiRobert – Hyperautomation Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MultiRobert | Hyperautomation Engineer</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/space.css" />
 </head>
 <body>
 
-  <!-- 우주 배경 -->
-  <div id="space"></div>
-
+  <!-- STAR BACKGROUND -->
   <div id="stars"></div>
 
-
-  <!-- 중앙 UI -->
+  <!-- CENTER UI -->
   <div class="center-ui">
-    <button class="arrow left" onclick="rotateLeft()">◀</button>
+    <button class="arrow" id="prev">&#9664;</button>
 
-   <div class="earth">
+    <div class="earth">
       <div class="earth-atmosphere"></div>
-   </div>
+    </div>
 
-    <button class="arrow right" onclick="rotateRight()">▶</button>
+    <button class="arrow" id="next">&#9654;</button>
   </div>
 
-  <!-- 메뉴 텍스트 -->
-  <div class="menu">
-    <span id="menu-text">Home</span>
-  </div>
+  <!-- MENU TEXT -->
+  <div class="menu" id="menuText">Home</div>
 
+  <!-- JS -->
   <script src="assets/js/space.js"></script>
+
+  <!-- STAR GENERATION (inline for safety) -->
+  <script>
+    const stars = document.getElementById("stars");
+    const STAR_COUNT = 220;
+
+    for (let i = 0; i < STAR_COUNT; i++) {
+      const star = document.createElement("div");
+
+      const sizeType = Math.random();
+      if (sizeType < 0.6) star.className = "star small";
+      else if (sizeType < 0.9) star.className = "star medium";
+      else star.className = "star large";
+
+      star.style.left = Math.random() * 100 + "%";
+      star.style.top = Math.random() * 100 + "%";
+      star.style.animationDuration = 2 + Math.random() * 4 + "s";
+
+      stars.appendChild(star);
+    }
+  </script>
+
 </body>
 </html>
