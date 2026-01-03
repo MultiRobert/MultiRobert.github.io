@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Solar System</title>
 
-  <link rel="stylesheet" href="assets/css/space.css" />
+  <!-- ✅ CSS: 반드시 이 경로 -->
+  <link rel="stylesheet" href="assets/css/space.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -13,21 +16,44 @@
 
   <!-- ☀ 태양계 -->
   <div id="solar-system">
-
     <div class="sun"></div>
 
-    <div class="orbit mercury"><div class="planet"></div></div>
-    <div class="orbit venus"><div class="planet"></div></div>
-    <div class="orbit earth"><div class="planet"></div></div>
-    <div class="orbit mars"><div class="planet"></div></div>
-    <div class="orbit jupiter"><div class="planet"></div></div>
-    <div class="orbit saturn"><div class="planet"></div></div>
-    <div class="orbit uranus"><div class="planet"></div></div>
-    <div class="orbit neptune"><div class="planet"></div></div>
+    <div class="orbit mercury">
+      <div class="planet"></div>
+    </div>
 
+    <div class="orbit venus">
+      <div class="planet"></div>
+    </div>
+
+    <div class="orbit earth">
+      <div class="planet"></div>
+    </div>
+
+    <div class="orbit mars">
+      <div class="planet"></div>
+    </div>
+
+    <div class="orbit jupiter">
+      <div class="planet"></div>
+    </div>
+
+    <div class="orbit saturn">
+      <div class="planet"></div>
+      <div class="ring"></div>
+    </div>
+
+    <div class="orbit uranus">
+      <div class="planet"></div>
+    </div>
+
+    <div class="orbit neptune">
+      <div class="planet"></div>
+    </div>
   </div>
 
+  <!-- ✅ JS: 반드시 body 맨 아래 -->
   <script src="assets/js/stars.js"></script>
-  <script src="assets/js/zoom.js"></script>
+
 </body>
 </html>
