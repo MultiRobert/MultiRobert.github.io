@@ -1,9 +1,15 @@
+/* =========================
+   RESET
+========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* =========================
+   BODY
+========================= */
 body {
   overflow: hidden;
   height: 100vh;
@@ -12,26 +18,49 @@ body {
   color: white;
 }
 
-/* 우주 배경 */
-#space {
+/* =========================
+   STAR BACKGROUND
+========================= */
+#stars {
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(2px 2px at 20% 30%, white, transparent),
-    radial-gradient(1px 1px at 80% 40%, white, transparent),
-    radial-gradient(1.5px 1.5px at 50% 70%, white, transparent),
-    radial-gradient(1px 1px at 10% 80%, white, transparent);
-  background-repeat: repeat;
-  animation: twinkle 10s infinite alternate;
-  z-index: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.star.small {
+  width: 1px;
+  height: 1px;
+  background: #ffffff;
+}
+
+.star.medium {
+  width: 2px;
+  height: 2px;
+  background: #cfe8ff;
+}
+
+.star.large {
+  width: 3px;
+  height: 3px;
+  background: #fff2a8;
+  box-shadow: 0 0 6px rgba(255, 242, 168, 0.8);
 }
 
 @keyframes twinkle {
-  from { opacity: 0.6; }
+  from { opacity: 0.5; }
   to { opacity: 1; }
 }
 
-/* 중앙 UI */
+/* =========================
+   CENTER UI
+========================= */
 .center-ui {
   position: absolute;
   top: 45%;
@@ -40,68 +69,96 @@ body {
   display: flex;
   align-items: center;
   gap: 40px;
-  z-index: 2;
+  z-index: 3;
 }
 
-/* 지구 */
-.earth {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  position: relative;
-
-  /* 지구 색감 */
-  background:
-    radial-gradient(circle at 30% 30%,
-      #5dade2 0%,
-      #1f618d 35%,
-      #154360 55%,
-      #0b2c3d 70%,
-      #000 100%
-    );
-
-  box-shadow:
-    0 0 30px rgba(93,173,226,0.4),
-    inset -30px -30px 60px rgba(0,0,0,0.8);
-
-  animation: rotate 25s linear infinite;
-}
-
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* 지구 대기권 */
-.earth-glow {
-  position: absolute;
-  inset: -18px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(135,206,235,0.25),
-    rgba(135,206,235,0.05),
-    transparent 70%
-  );
-}
-
-
-/* 화살표 */
+/* =========================
+   ARROWS
+========================= */
 .arrow {
   background: none;
   border: none;
   color: #e5e7eb;
   font-size: 28px;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s, opacity 0.2s;
+  opacity: 0.85;
 }
 
 .arrow:hover {
-  transform: scale(1.2);
+  transform: scale(1.25);
+  opacity: 1;
 }
 
-/* 메뉴 */
+/* =========================
+   EARTH (BASE)
+========================= */
+.earth {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+
+  /* 바다 + 밤쪽 */
+  background: radial-gradient(
+    circle at 30% 35%,
+    #2e86c1 0%,
+    #1b4f72 40%,
+    #0b2c3d 65%,
+    #000000 100%
+  );
+
+  box-shadow:
+    0 0 35px rgba(80, 160, 255, 0.35),
+    inset -35px -25px 60px rgba(0, 0, 0, 0.85);
+}
+
+/* =========================
+   CONTINENTS
+========================= */
+.earth-continents {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle at 20% 40%, rgba(46,204,113,0.9) 6%, transparent 7%),
+    radial-gradient(circle at 35% 55%, rgba(39,174,96,0.85) 7%, transparent 9%),
+    radial-gradient(circle at 50% 45%, rgba(46,204,113,0.75) 5%, transparent 7%),
+    radial-gradient(circle at 65% 60%, rgba(39,174,96,0.85) 8%, transparent 10%),
+    radial-gradient(circle at 75% 40%, rgba(46,204,113,0.7) 6%, transparent 8%);
+
+  filter: blur(1px);
+  animation: continents-rotate 30s linear infinite;
+}
+
+@keyframes continents-rotate {
+  from { transform: translateX(0); }
+  to { transform: translateX(-40px); }
+}
+
+/* =========================
+   ATMOSPHERE
+========================= */
+.earth-atmosphere {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  pointer-events: none;
+
+  background: radial-gradient(
+    circle,
+    rgba(120,200,255,0.25),
+    rgba(120,200,255,0.12),
+    transparent 70%
+  );
+}
+
+/* =========================
+   MENU TEXT
+========================= */
 .menu {
   position: absolute;
   top: 65%;
@@ -109,43 +166,6 @@ body {
   text-align: center;
   font-size: 22px;
   letter-spacing: 2px;
-  z-index: 2;
+  z-index: 3;
+  opacity: 0.9;
 }
-
-/* 별 컨테이너 */
-#stars {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  overflow: hidden;
-}
-
-/* 공통 별 */
-.star {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.8;
-}
-
-/* 작은 별 */
-.star.small {
-  width: 1px;
-  height: 1px;
-  background: white;
-}
-
-/* 중간 별 */
-.star.medium {
-  width: 2px;
-  height: 2px;
-  background: #bcdcff;
-}
-
-/* 큰 별 */
-.star.large {
-  width: 3px;
-  height: 3px;
-  background: #fff2a8;
-  box-shadow: 0 0 6px rgba(255,242,168,0.8);
-}
-
