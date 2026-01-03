@@ -1,51 +1,45 @@
 const canvas = document.getElementById("starfield");
 const ctx = canvas.getContext("2d");
 
-let w, h;
+let stars = [];
+
 function resize() {
-  w = canvas.width = window.innerWidth;
-  h = canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener("resize", resize);
-
-const STAR_COUNT = Math.floor((w * h) / 3000); // 화면 크기 비례
-const stars = [];
-
-function random(min, max) {
-  return Math.random() * (max - min) + min;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  createStars();
 }
 
-// 별 생성 (완전 랜덤)
-for (let i = 0; i < STAR_COUNT; i++) {
-  stars.push({
-    x: Math.random() * w,
-    y: Math.random() * h,
-    r: random(0.4, 1.8),
-    alpha: random(0.3, 1),
-    speed: random(0.02, 0.12),
-    hue: random(0, 60) // 약간 노랑~흰색
-  });
+function createStars() {
+  stars = [];
+  const count = Math.floor((canvas.width * canvas.height) / 1800);
+
+  for (let i = 0; i < count; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.6 + 0.2,
+      alpha: Math.random(),
+      speed: Math.random() * 0.015 + 0.003
+    });
+  }
 }
 
 function drawStars() {
-  ctx.fillStyle = "#000";
-  ctx.fillRect(0, 0, w, h); // ⭐ 이 줄이 핵심
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   for (const s of stars) {
+    s.alpha += s.speed;
+    if (s.alpha > 1 || s.alpha < 0) s.speed *= -1;
+
     ctx.beginPath();
-    ctx.fillStyle = `hsla(${s.hue},100%,88%,${s.alpha})`;
+    ctx.fillStyle = `rgba(255,255,220,${s.alpha})`;
     ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
     ctx.fill();
-
-    s.y += s.speed;
-    if (s.y > h) {
-      s.y = -5;
-      s.x = Math.random() * w;
-    }
   }
 
   requestAnimationFrame(drawStars);
 }
 
+window.addEventListener("resize", resize);
+resize();
 drawStars();
