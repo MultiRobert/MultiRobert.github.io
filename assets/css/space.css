@@ -105,7 +105,7 @@ body {
   overflow: hidden;
   z-index: 2;
 
-  background-image: url("../images/earth-texture.jpg");
+  background-image: url("https://raw.githubusercontent.com/MultiRobert/MultiRobert.github.io/main/assets/images/earth-texture.jpg");
   background-size: cover;
   background-position: 0% 50%;
 
