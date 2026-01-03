@@ -1,180 +1,79 @@
-/* ===== 기본 리셋 ===== */
-* {
+/* reset */
+html, body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: black;
   overflow: hidden;
+  background: black;
 }
 
-/* ===== 별 캔버스 ===== */
+/* ⭐ 별 캔버스 */
 #starfield {
   position: fixed;
   inset: 0;
   z-index: 0;
-  pointer-events: none;
 }
 
-/* ===== 줌 컨테이너 ===== */
-#scene {
+/* ☀ 태양계 */
+#solar-system {
   position: fixed;
   inset: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
-  transform-origin: center;
-  z-index: 1;
-}
-
-/* ===== 태양계 ===== */
-#solar-system {
-  position: relative;
+  justify-content: center;
+  transform: scale(1);
   z-index: 2;
-  width: 900px;
-  height: 900px;
 }
 
-/* ===== 태양 ===== */
+/* 태양 */
 .sun {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 130px;
-  height: 130px;
-  transform: translate(-50%, -50%);
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle at 35% 35%,
-    #fff6cc,
-    #ffb300 45%,
-    #ff7a00 70%
-  );
-  box-shadow:
-    0 0 40px rgba(255, 170, 0, 0.6),
-    0 0 120px rgba(255, 140, 0, 0.3);
+  background: radial-gradient(circle, #fff6b0 0%, #ffb300 40%, #ff7a00 70%);
+  box-shadow: 0 0 80px 40px rgba(255, 170, 0, 0.4);
+  position: absolute;
 }
 
-/* ===== 공통 궤도 ===== */
+/* 궤도 공통 */
 .orbit {
   position: absolute;
-  top: 50%;
-  left: 50%;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* 🌌 궤도 그라데이션 (아주 약하게) */
-.orbit::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255,255,255,0.05),
-    rgba(255,255,255,0.01),
-    transparent 70%
-  );
-}
-
-/* ===== 행성 공통 ===== */
-.planet {
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 50%;
-}
-
-/* ===== 각 행성 ===== */
-.mercury { width: 180px; height: 180px; }
-.mercury .planet {
-  width: 10px; height: 10px;
-  background: radial-gradient(circle at 30% 30%, #bbb, #666);
-}
-
-.venus { width: 240px; height: 240px; }
-.venus .planet {
-  width: 16px; height: 16px;
-  background: radial-gradient(circle at 30% 30%, #ffe0a3, #c18a3a);
-}
-
-.earth { width: 300px; height: 300px; }
-.earth .planet {
-  width: 18px; height: 18px;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #6fc3ff,
-    #0044aa 60%
-  );
-}
-
-.mars { width: 360px; height: 360px; }
-.mars .planet {
-  width: 14px; height: 14px;
-  background: radial-gradient(circle at 30% 30%, #ff9b6a, #9a3b1a);
-}
-
-.jupiter { width: 450px; height: 450px; }
-.jupiter .planet {
-  width: 36px; height: 36px;
-  background: radial-gradient(circle at 30% 30%, #ffd6a3, #a8703a);
-}
-
-.saturn { width: 540px; height: 540px; }
-.saturn .planet {
-  width: 30px; height: 30px;
-  background: radial-gradient(circle at 30% 30%, #ffe6b5, #b38b5e);
-  position: relative;
-}
-.saturn .planet::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 52px;
-  height: 14px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 2px solid rgba(255, 220, 180, 0.4);
-}
-
-.uranus { width: 630px; height: 630px; }
-.uranus .planet {
-  width: 22px; height: 22px;
-  background: radial-gradient(circle at 30% 30%, #b6f0ff, #3a7fa1);
-}
-
-.neptune { width: 720px; height: 720px; }
-.neptune .planet {
-  width: 22px; height: 22px;
-  background: radial-gradient(circle at 30% 30%, #6fa8ff, #1b3f8b);
-}
-
-/* ===== 회전 ===== */
-.orbit {
+  border: 1px solid rgba(255,255,255,0.08);
   animation: spin linear infinite;
 }
 
-.sun,
-.orbit,
+/* 행성 공통 */
 .planet {
   position: absolute;
+  top: 50%;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transform: translateY(-50%);
 }
 
-.mercury { animation-duration: 6s; }
-.venus   { animation-duration: 10s; }
-.earth   { animation-duration: 14s; }
-.mars    { animation-duration: 18s; }
-.jupiter { animation-duration: 30s; }
-.saturn  { animation-duration: 36s; }
-.uranus  { animation-duration: 42s; }
-.neptune { animation-duration: 50s; }
+/* 궤도 크기 */
+.mercury { width: 180px; height: 180px; animation-duration: 6s; }
+.venus   { width: 240px; height: 240px; animation-duration: 9s; }
+.earth   { width: 300px; height: 300px; animation-duration: 12s; }
+.mars    { width: 360px; height: 360px; animation-duration: 15s; }
+.jupiter { width: 460px; height: 460px; animation-duration: 20s; }
+.saturn  { width: 560px; height: 560px; animation-duration: 26s; }
+.uranus  { width: 660px; height: 660px; animation-duration: 32s; }
+.neptune { width: 760px; height: 760px; animation-duration: 38s; }
+
+/* 행성 색 */
+.mercury .planet { background: #aaa; }
+.venus   .planet { background: #d6b27c; }
+.earth   .planet { background: #2a6cff; }
+.mars    .planet { background: #c1440e; }
+.jupiter .planet { background: #d9a066; width: 24px; height: 24px; }
+.saturn  .planet { background: #e5c58f; width: 22px; height: 22px; }
+.uranus  .planet { background: #8fd3e8; }
+.neptune .planet { background: #3556ff; }
 
 @keyframes spin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to   { transform: translate(-50%, -50%) rotate(360deg); }
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
