@@ -11,11 +11,12 @@
    BODY
 ========================= */
 body {
-  overflow: hidden;
+  width: 100vw;
   height: 100vh;
+  overflow: hidden;
   font-family: system-ui, sans-serif;
   background: radial-gradient(circle at bottom, #020617, #000);
-  color: white;
+  color: #ffffff;
 }
 
 /* =========================
@@ -31,31 +32,34 @@ body {
 .star {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.8;
+  animation: twinkle 4s infinite alternate;
 }
 
 .star.small {
   width: 1px;
   height: 1px;
   background: #ffffff;
+  opacity: 0.6;
 }
 
 .star.medium {
   width: 2px;
   height: 2px;
   background: #cfe8ff;
+  opacity: 0.75;
 }
 
 .star.large {
   width: 3px;
   height: 3px;
   background: #fff2a8;
+  opacity: 0.9;
   box-shadow: 0 0 6px rgba(255, 242, 168, 0.8);
 }
 
 @keyframes twinkle {
-  from { opacity: 0.5; }
-  to   { opacity: 1; }
+  from { opacity: 0.4; }
+  to { opacity: 1; }
 }
 
 /* =========================
@@ -81,8 +85,8 @@ body {
   color: #e5e7eb;
   font-size: 28px;
   cursor: pointer;
-  transition: transform 0.2s, opacity 0.2s;
   opacity: 0.85;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .arrow:hover {
@@ -101,20 +105,18 @@ body {
   overflow: hidden;
   z-index: 2;
 
-  /* ✅ 지구 텍스처 */
   background-image: url("../images/earth-texture.jpg");
   background-size: cover;
   background-position: 0% 50%;
 
-  /* 밤/낮 그림자 + 입체감 */
   box-shadow:
-  0 0 35px rgba(80,160,255,0.35),
-  inset -20px -15px 35px rgba(0,0,0,0.55);
+    0 0 28px rgba(90, 160, 255, 0.35),
+    inset -20px -15px 35px rgba(0, 0, 0, 0.55);
 
   animation: earth-rotate 40s linear infinite;
 }
 
-/* 지구 자전 효과 */
+/* 지구 자전 */
 @keyframes earth-rotate {
   from {
     background-position: 0% 50%;
@@ -129,14 +131,14 @@ body {
 ========================= */
 .earth-atmosphere {
   position: absolute;
-  inset: -14px;
+  inset: -12px;
   border-radius: 50%;
   pointer-events: none;
 
   background: radial-gradient(
     circle,
-    rgba(120, 200, 255, 0.25),
-    rgba(120, 200, 255, 0.12),
+    rgba(120, 200, 255, 0.28),
+    rgba(120, 200, 255, 0.15),
     transparent 70%
   );
 }
@@ -151,6 +153,6 @@ body {
   text-align: center;
   font-size: 22px;
   letter-spacing: 2px;
-  z-index: 3;
   opacity: 0.9;
+  z-index: 3;
 }
