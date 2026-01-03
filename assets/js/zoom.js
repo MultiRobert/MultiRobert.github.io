@@ -1,12 +1,12 @@
-const solar = document.getElementById("solar-system");
+const system = document.getElementById("solar-system");
+
 let scale = 1;
 
 window.addEventListener("wheel", e => {
   e.preventDefault();
 
-  scale += e.deltaY * -0.0006;
-  scale = Math.min(Math.max(0.4, scale), 2.2);
+  scale += e.deltaY * -0.001;
+  scale = Math.min(Math.max(0.4, scale), 3);
 
-  solar.style.transform =
-    `translate(-50%, -50%) scale(${scale})`;
+  system.style.transform = `scale(${scale})`;
 }, { passive: false });
