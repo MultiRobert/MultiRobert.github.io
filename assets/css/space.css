@@ -48,26 +48,44 @@ body {
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #38bdf8, #020617);
-  box-shadow:
-    0 0 40px rgba(56,189,248,0.6),
-    inset -20px -20px 40px rgba(0,0,0,0.6);
-  animation: rotate 20s linear infinite;
   position: relative;
+
+  /* 지구 색감 */
+  background:
+    radial-gradient(circle at 30% 30%,
+      #5dade2 0%,
+      #1f618d 35%,
+      #154360 55%,
+      #0b2c3d 70%,
+      #000 100%
+    );
+
+  box-shadow:
+    0 0 30px rgba(93,173,226,0.4),
+    inset -30px -30px 60px rgba(0,0,0,0.8);
+
+  animation: rotate 25s linear infinite;
 }
+
 
 @keyframes rotate {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-/* 지구 글로우 */
+/* 지구 대기권 */
 .earth-glow {
   position: absolute;
-  inset: -20px;
+  inset: -18px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(56,189,248,0.35), transparent);
+  background: radial-gradient(
+    circle,
+    rgba(135,206,235,0.25),
+    rgba(135,206,235,0.05),
+    transparent 70%
+  );
 }
+
 
 /* 화살표 */
 .arrow {
