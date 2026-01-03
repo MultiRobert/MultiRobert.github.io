@@ -11,33 +11,38 @@ body {
   color: white;
 }
 
-/* Universe */
+/* ===============================
+   Universe
+================================ */
 #universe {
   position: relative;
   width: 100%;
   height: 100%;
-  perspective: 1200px;
+  perspective: 1400px;
 }
 
-/* Stars */
-#stars {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  z-index: 0;
-}
-
-/* Meteors */
+/* ===============================
+   Stars & Meteors
+================================ */
+#stars,
 #meteors {
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 1;
   pointer-events: none;
 }
 
-/* Solar system container (45도 시점 핵심) */
+#stars {
+  z-index: 0;
+}
+
+#meteors {
+  z-index: 1;
+}
+
+/* ===============================
+   Solar system (45° view)
+================================ */
 #solar-system {
   position: absolute;
   top: 50%;
@@ -50,22 +55,26 @@ body {
   z-index: 2;
 }
 
-/* Sun */
+/* ===============================
+   Sun
+================================ */
 .sun {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 150px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(circle, #fff3a0, #ff9800, #ff5722);
+  background: radial-gradient(circle, #fff6b0, #ff9800, #ff5722);
   box-shadow:
-    0 0 120px rgba(255, 200, 0, 0.9),
-    0 0 200px rgba(255, 140, 0, 0.6);
+    0 0 140px rgba(255, 200, 0, 0.9),
+    0 0 240px rgba(255, 140, 0, 0.6);
 }
 
-/* Orbit */
+/* ===============================
+   Orbit base
+================================ */
 .orbit {
   position: absolute;
   top: 50%;
@@ -76,60 +85,117 @@ body {
   animation: spin linear infinite;
 }
 
-/* Planet */
+/* ===============================
+   Planet base (입체 핵심)
+================================ */
 .planet {
   position: absolute;
   top: 50%;
   right: -10px;
   transform: translateY(-50%);
   border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+
+  box-shadow:
+    inset -14px -14px 26px rgba(0,0,0,0.7),
+    inset 6px 6px 16px rgba(255,255,255,0.15),
+    0 0 22px rgba(0,0,0,0.7);
 }
 
-/* Individual planets */
+/* ===============================
+   Individual planets
+================================ */
+
+/* Mercury */
 .mercury { width: 180px; height: 180px; animation-duration: 10s; }
-.mercury .planet { width: 6px; height: 6px; background: #aaa; }
+.mercury .planet {
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle at 30% 30%, #bbb, #555 70%);
+}
 
+/* Venus */
 .venus { width: 240px; height: 240px; animation-duration: 16s; }
-.venus .planet { width: 10px; height: 10px; background: #facc15; }
+.venus .planet {
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle at 30% 30%, #ffe08a, #c2a100 70%);
+}
 
+/* Earth */
 .earth { width: 300px; height: 300px; animation-duration: 22s; }
 .earth .planet {
-  width: 14px;
-  height: 14px;
-  background-image: url("https://multirobert.github.io/earth-texture.jpg");
-  background-size: cover;
-}
-
-.mars { width: 360px; height: 360px; animation-duration: 28s; }
-.mars .planet { width: 8px; height: 8px; background: #ef4444; }
-
-.jupiter { width: 440px; height: 440px; animation-duration: 40s; }
-.jupiter .planet { width: 24px; height: 24px; background: #d6a57c; }
-
-.saturn { width: 520px; height: 520px; animation-duration: 48s; }
-.saturn .planet {
   width: 20px;
   height: 20px;
-  background: #e5c07b;
+  background-image:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(255,255,255,0.35),
+      rgba(0,0,0,0.9) 70%
+    ),
+    url("https://multirobert.github.io/earth-texture.jpg");
+  background-blend-mode: overlay;
+}
+
+/* Mars */
+.mars { width: 360px; height: 360px; animation-duration: 28s; }
+.mars .planet {
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle at 30% 30%, #ff8a65, #7f1d1d 70%);
+}
+
+/* Jupiter */
+.jupiter { width: 440px; height: 440px; animation-duration: 40s; }
+.jupiter .planet {
+  width: 28px;
+  height: 28px;
+  background: radial-gradient(circle at 30% 30%, #f3d5b5, #9c6b3f 70%);
+}
+
+/* Saturn */
+.saturn { width: 520px; height: 520px; animation-duration: 48s; }
+.saturn .planet {
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(circle at 30% 30%, #f1d9a0, #bfa76a 70%);
   position: relative;
 }
+
 .saturn .ring {
   position: absolute;
-  width: 48px;
-  height: 18px;
+  width: 56px;
+  height: 20px;
   border-radius: 50%;
-  border: 3px solid rgba(230,210,170,0.6);
+  border: 3px solid rgba(230,210,170,0.55);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotateX(65deg);
+  box-shadow:
+    0 0 12px rgba(255,230,180,0.35),
+    inset 0 0 6px rgba(0,0,0,0.4);
 }
 
+/* Uranus */
 .uranus { width: 600px; height: 600px; animation-duration: 56s; }
-.uranus .planet { width: 14px; height: 14px; background: #7dd3fc; }
+.uranus .planet {
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle at 30% 30%, #b9f3ff, #4ba3c7 70%);
+}
 
+/* Neptune */
 .neptune { width: 680px; height: 680px; animation-duration: 64s; }
-.neptune .planet { width: 14px; height: 14px; background: #2563eb; }
+.neptune .planet {
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle at 30% 30%, #5fa8ff, #1e3a8a 70%);
+}
 
+/* ===============================
+   Orbit animation
+================================ */
 @keyframes spin {
   from { transform: translate(-50%, -50%) rotateZ(0deg); }
   to   { transform: translate(-50%, -50%) rotateZ(360deg); }
