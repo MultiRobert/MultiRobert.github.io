@@ -108,8 +108,8 @@ body {
 
   /* 밤/낮 그림자 + 입체감 */
   box-shadow:
-    0 0 35px rgba(80, 160, 255, 0.35),
-    inset -35px -25px 60px rgba(0, 0, 0, 0.85);
+  0 0 35px rgba(80,160,255,0.35),
+  inset -20px -15px 35px rgba(0,0,0,0.55);
 
   animation: earth-rotate 40s linear infinite;
 }
