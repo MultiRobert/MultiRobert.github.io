@@ -2,142 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>Solar System Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MultiRobert | Hyperautomation Engineer</title>
-
-  <link rel="stylesheet" href="assets/css/space.css" />
-
-  <style>
-    /* PASSWORD OVERLAY */
-    #passwordOverlay {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at center, #020617, #000);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-    }
-
-    .password-box {
-      background: rgba(0, 0, 0, 0.65);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 32px 36px;
-      border-radius: 12px;
-      text-align: center;
-      backdrop-filter: blur(10px);
-    }
-
-    .password-box h2 {
-      margin-bottom: 18px;
-      font-weight: 500;
-      letter-spacing: 1px;
-    }
-
-    .password-box input {
-      width: 220px;
-      padding: 10px;
-      background: #020617;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: white;
-      border-radius: 6px;
-      font-size: 16px;
-      outline: none;
-    }
-
-    .password-box button {
-      margin-top: 16px;
-      width: 100%;
-      padding: 10px;
-      background: #2563eb;
-      border: none;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 15px;
-    }
-
-    .password-box button:hover {
-      background: #1e40af;
-    }
-
-    .error {
-      margin-top: 10px;
-      color: #f87171;
-      font-size: 14px;
-      display: none;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/solar.css" />
 </head>
 <body>
 
-  <!-- PASSWORD OVERLAY -->
-  <div id="passwordOverlay">
-    <div class="password-box">
-      <h2>Protected Access</h2>
-      <input type="password" id="passwordInput" placeholder="Enter password" />
-      <button onclick="checkPassword()">Enter</button>
-      <div class="error" id="errorMsg">Wrong password</div>
+<div id="universe">
+
+  <!-- Sun -->
+  <div class="sun"></div>
+
+  <!-- Orbits & Planets -->
+  <div class="orbit mercury"><div class="planet"></div></div>
+  <div class="orbit venus"><div class="planet"></div></div>
+  <div class="orbit earth"><div class="planet"></div></div>
+  <div class="orbit mars"><div class="planet"></div></div>
+  <div class="orbit jupiter"><div class="planet"></div></div>
+  <div class="orbit saturn">
+    <div class="planet">
+      <div class="ring"></div>
     </div>
   </div>
+  <div class="orbit uranus"><div class="planet"></div></div>
+  <div class="orbit neptune"><div class="planet"></div></div>
 
-  <!-- STAR BACKGROUND -->
-  <div id="stars"></div>
+</div>
 
-  <!-- CENTER UI -->
-  <div class="center-ui">
-    <button class="arrow" id="prev">&#9664;</button>
-
-    <div class="earth">
-      <div class="earth-atmosphere"></div>
-    </div>
-
-    <button class="arrow" id="next">&#9654;</button>
-  </div>
-
-  <!-- MENU TEXT -->
-  <div class="menu" id="menuText">Home</div>
-
-  <!-- STAR GENERATION -->
-  <script>
-    const stars = document.getElementById("stars");
-    const STAR_COUNT = 220;
-
-    for (let i = 0; i < STAR_COUNT; i++) {
-      const star = document.createElement("div");
-
-      const sizeType = Math.random();
-      if (sizeType < 0.6) star.className = "star small";
-      else if (sizeType < 0.9) star.className = "star medium";
-      else star.className = "star large";
-
-      star.style.left = Math.random() * 100 + "%";
-      star.style.top = Math.random() * 100 + "%";
-      star.style.animationDuration = 2 + Math.random() * 4 + "s";
-
-      stars.appendChild(star);
-    }
-  </script>
-
-  <!-- PASSWORD LOGIC -->
-  <script>
-    const CORRECT_PASSWORD = "1234";  // ← 여기 비밀번호 바꾸세요
-
-    function checkPassword() {
-      const input = document.getElementById("passwordInput").value;
-      const error = document.getElementById("errorMsg");
-
-      if (input === CORRECT_PASSWORD) {
-        document.getElementById("passwordOverlay").style.display = "none";
-      } else {
-        error.style.display = "block";
-      }
-    }
-
-    document.getElementById("passwordInput").addEventListener("keydown", e => {
-      if (e.key === "Enter") checkPassword();
-    });
-  </script>
-
+<script src="assets/js/solar.js"></script>
 </body>
 </html>
