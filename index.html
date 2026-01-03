@@ -1,29 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Solar System</title>
-  <link rel="stylesheet" href="assets/css/solar.css" />
-</head>
 <body>
-<canvas id="starfield"></canvas>
-<div id="stars"></div>
-<div id="nebula"></div>
 
-<div id="solar-system">
-  <div class="sun"></div>
+  <!-- 별 배경 -->
+  <canvas id="starfield"></canvas>
 
-  <div class="orbit mercury"><div class="planet"></div></div>
-  <div class="orbit venus"><div class="planet"></div></div>
-  <div class="orbit earth"><div class="planet"></div></div>
-  <div class="orbit mars"><div class="planet"></div></div>
-  <div class="orbit jupiter"><div class="planet"></div></div>
-  <div class="orbit saturn"><div class="planet ring"></div></div>
-  <div class="orbit uranus"><div class="planet"></div></div>
-  <div class="orbit neptune"><div class="planet"></div></div>
-</div>
+  <!-- 태양계 전체 -->
+  <div id="solar-system">
 
-<script src="assets/js/solar.js"></script>
-<script src="assets/js/stars.js"></script>
+    <div class="sun"></div>
+
+    <div class="orbit mercury">
+      <div class="planet"></div>
+    </div>
+
+    <div class="orbit venus">
+      <div class="planet"></div>
+    </div>
+
+    <div class="orbit earth">
+      <div class="planet"></div>
+    </div>
+
+    <div class="orbit mars">
+      <div class="planet"></div>
+    </div>
+
+    <div class="orbit jupiter">
+      <div class="planet"></div>
+    </div>
+
+    <div class="orbit saturn">
+      <div class="planet"></div>
+      <div class="ring"></div>
+    </div>
+
+    <div class="orbit uranus">
+      <div class="planet"></div>
+    </div>
+
+    <div class="orbit neptune">
+      <div class="planet"></div>
+    </div>
+
+  </div>
+
+  <script src="assets/js/stars.js"></script>
 </body>
-</html>
