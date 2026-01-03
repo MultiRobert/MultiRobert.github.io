@@ -1,44 +1,35 @@
-// =========================
-// MENU DATA
-// =========================
-const menus = ["Home", "Projects", "About", "Contact"];
-let currentIndex = 0;
+const meteorContainer = document.getElementById("meteors");
 
-// =========================
-// ELEMENTS
-// =========================
-const menuText = document.getElementById("menuText");
-const earth = document.querySelector(".earth");
-const prevBtn = document.getElementById("prev");
-const nextBtn = document.getElementById("next");
+function createMeteor() {
+  const meteor = document.createElement("div");
+  meteor.className = "meteor";
 
-// =========================
-// UPDATE UI
-// =========================
-function updateUI(direction = 1) {
-  menuText.textContent = menus[currentIndex];
+  const startX = Math.random() * window.innerWidth;
+  const startY = -100;
 
-  // 살짝 반응하는 회전 효과
-  earth.style.transform = `rotateY(${direction * 15}deg)`;
-  setTimeout(() => {
-    earth.style.transform = "rotateY(0deg)";
-  }, 300);
+  meteor.style.left = `${startX}px`;
+  meteor.style.top = `${startY}px`;
+
+  const length = 80 + Math.random() * 60;
+  meteor.style.width = `${length}px`;
+
+  meteorContainer.appendChild(meteor);
+
+  const duration = 600 + Math.random() * 400;
+
+  meteor.animate(
+    [
+      { transform: "translate(0, 0)", opacity: 1 },
+      { transform: "translate(600px, 800px)", opacity: 0 }
+    ],
+    {
+      duration,
+      easing: "ease-in",
+      fill: "forwards"
+    }
+  );
+
+  setTimeout(() => meteor.remove(), duration);
 }
 
-// =========================
-// EVENTS
-// =========================
-prevBtn.addEventListener("click", () => {
-  currentIndex = (currentIndex - 1 + menus.length) % menus.length;
-  updateUI(-1);
-});
-
-nextBtn.addEventListener("click", () => {
-  currentIndex = (currentIndex + 1) % menus.length;
-  updateUI(1);
-});
-
-// =========================
-// INIT
-// =========================
-updateUI();
+setInterval(createMeteor, 1200);
