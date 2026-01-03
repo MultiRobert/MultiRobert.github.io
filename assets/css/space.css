@@ -72,7 +72,7 @@ body {
   transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 50px;
   z-index: 3;
 }
 
@@ -83,7 +83,7 @@ body {
   background: none;
   border: none;
   color: #e5e7eb;
-  font-size: 28px;
+  font-size: 32px;
   cursor: pointer;
   opacity: 0.85;
   transition: transform 0.2s ease, opacity 0.2s ease;
@@ -95,25 +95,25 @@ body {
 }
 
 /* =========================
-   EARTH (TEXTURE VERSION)
+   EARTH (BIG & FAST)
 ========================= */
 .earth {
-  width: 180px;
-  height: 180px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
   position: relative;
   overflow: hidden;
   z-index: 2;
 
-  background-image: url("https://raw.githubusercontent.com/MultiRobert/MultiRobert.github.io/main/earth-texture.jpg");
+  background-image: url("https://multirobert.github.io/earth-texture.jpg");
   background-size: cover;
   background-position: 0% 50%;
 
   box-shadow:
-    0 0 28px rgba(90, 160, 255, 0.35),
-    inset -20px -15px 35px rgba(0, 0, 0, 0.55);
+    0 0 38px rgba(90, 160, 255, 0.45),
+    inset -28px -22px 45px rgba(0, 0, 0, 0.55);
 
-  animation: earth-rotate 40s linear infinite;
+  animation: earth-rotate 22s linear infinite;
 }
 
 /* 지구 자전 */
@@ -131,14 +131,14 @@ body {
 ========================= */
 .earth-atmosphere {
   position: absolute;
-  inset: -12px;
+  inset: -16px;
   border-radius: 50%;
   pointer-events: none;
 
   background: radial-gradient(
     circle,
-    rgba(120, 200, 255, 0.28),
-    rgba(120, 200, 255, 0.15),
+    rgba(120, 200, 255, 0.30),
+    rgba(120, 200, 255, 0.16),
     transparent 70%
   );
 }
@@ -148,7 +148,7 @@ body {
 ========================= */
 .menu {
   position: absolute;
-  top: 65%;
+  top: 68%;
   width: 100%;
   text-align: center;
   font-size: 22px;
