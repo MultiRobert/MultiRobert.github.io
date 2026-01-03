@@ -1,44 +1,24 @@
-const stars = document.getElementById("stars");
-const meteors = document.getElementById("meteors");
+function meteor() {
+  const m = document.createElement("div");
+  m.style.position = "absolute";
+  m.style.width = "120px";
+  m.style.height = "2px";
+  m.style.background = "linear-gradient(to right, rgba(255,255,255,0), white)";
+  m.style.top = "-100px";
+  m.style.left = Math.random() * window.innerWidth + "px";
+  m.style.opacity = "0.8";
 
-// 별 생성
-for (let i = 0; i < 300; i++) {
-  const star = document.createElement("div");
-  const size = Math.random() * 2 + 0.5;
+  document.body.appendChild(m);
 
-  star.style.position = "absolute";
-  star.style.width = `${size}px`;
-  star.style.height = `${size}px`;
-  star.style.borderRadius = "50%";
-  star.style.background = Math.random() > 0.8 ? "#ffe9a3" : "#ffffff";
-  star.style.opacity = Math.random();
-  star.style.top = Math.random() * 100 + "%";
-  star.style.left = Math.random() * 100 + "%";
+  m.animate(
+    [
+      { transform: "translate(0,0)", opacity: 1 },
+      { transform: "translate(600px,800px)", opacity: 0 }
+    ],
+    { duration: 800, easing: "ease-in" }
+  );
 
-  stars.appendChild(star);
+  setTimeout(() => m.remove(), 800);
 }
 
-// 별똥별
-setInterval(() => {
-  const meteor = document.createElement("div");
-  meteor.style.position = "absolute";
-  meteor.style.width = "120px";
-  meteor.style.height = "2px";
-  meteor.style.background =
-    "linear-gradient(90deg, rgba(255,255,255,0), white)";
-  meteor.style.top = Math.random() * 40 + "%";
-  meteor.style.left = Math.random() * 100 + "%";
-  meteor.style.transform = "rotate(-45deg)";
-  meteor.style.opacity = 0.8;
-  meteor.style.transition = "all 1s linear";
-
-  meteors.appendChild(meteor);
-
-  requestAnimationFrame(() => {
-    meteor.style.left = "-200px";
-    meteor.style.top = "120%";
-    meteor.style.opacity = 0;
-  });
-
-  setTimeout(() => meteor.remove(), 1000);
-}, 4000);
+setInterval(meteor, 2000);
