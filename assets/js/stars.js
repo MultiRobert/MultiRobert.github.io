@@ -29,15 +29,15 @@ for (let i = 0; i < STAR_COUNT; i++) {
 }
 
 function drawStars() {
-  ctx.clearRect(0, 0, w, h);
+  ctx.fillStyle = "#000";
+  ctx.fillRect(0, 0, w, h); // ⭐ 이 줄이 핵심
 
   for (const s of stars) {
     ctx.beginPath();
-    ctx.fillStyle = `hsla(${s.hue}, 100%, 88%, ${s.alpha})`;
+    ctx.fillStyle = `hsla(${s.hue},100%,88%,${s.alpha})`;
     ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
     ctx.fill();
 
-    // 미세 이동 (우주 드리프트)
     s.y += s.speed;
     if (s.y > h) {
       s.y = -5;
